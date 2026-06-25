@@ -182,5 +182,454 @@ Using AWS allowed the company to expand globally within minutes instead of spend
 
 ---
 
+#  Module 2️⃣ : Compute, Scaling & Application Integration
+
+
+---
+
+
+## 🎯 Learning Objectives
+
+By completing this module, I learned how to:
+
+* Understand cloud compute resources and Amazon EC2
+* Compare AWS compute resources with traditional on-premises infrastructure
+* Identify and select appropriate EC2 instance families
+* Understand Amazon EC2 pricing models
+* Use Amazon Machine Images (AMIs)
+* Differentiate scalability from elasticity
+* Configure Auto Scaling concepts
+* Understand Elastic Load Balancing (ELB)
+* Explore event-driven architectures
+* Understand Amazon SQS, Amazon SNS, and Amazon EventBridge
+* Recognize modern cloud application design patterns
+
+---
+
+## 🖥️ Amazon EC2 (Elastic Compute Cloud)
+
+Amazon EC2 provides scalable virtual servers in the cloud. It enables organizations to deploy applications without purchasing, maintaining, or managing physical hardware.
+
+With EC2, resources can be launched, configured, scaled, and terminated on demand.
+
+### Key Benefits
+
+✅ On-demand compute resources
+
+✅ Rapid deployment
+
+✅ Flexible scaling
+
+✅ Global availability
+
+✅ Pay-as-you-go pricing
+
+✅ Reduced infrastructure costs
+
+---
+
+### Traditional Infrastructure vs AWS EC2
+
+| Traditional Infrastructure    | AWS EC2                    |
+| ----------------------------- | -------------------------- |
+| Purchase physical servers     | Launch instances on demand |
+| Weeks or months to deploy     | Minutes to deploy          |
+| High upfront costs            | Pay only for usage         |
+| Manual scaling                | Automated scaling          |
+| Hardware maintenance required | Managed by AWS             |
+
+---
+
+## ⚙️ EC2 Instance Types
+
+AWS offers specialized instance families optimized for different workloads.
+
+| Instance Family       | Description                              | Common Use Cases                        |
+| --------------------- | ---------------------------------------- | --------------------------------------- |
+| General Purpose       | Balanced compute, memory, and networking | Web servers, applications, repositories |
+| Compute Optimized     | High-performance processors              | HPC, gaming servers, ML inference       |
+| Memory Optimized      | Large memory capacity                    | Databases, analytics, caching           |
+| Accelerated Computing | GPUs and hardware accelerators           | AI/ML, rendering, graphics              |
+| Storage Optimized     | High-speed local storage                 | Data warehousing, big data workloads    |
+
+---
+
+## 🛠️ Managing AWS Resources
+
+AWS services are accessed through APIs and can be managed using several interfaces.
+
+### AWS Management Console
+
+A web-based graphical interface for AWS services.
+
+#### Best For
+
+* Beginners
+* Learning AWS
+* Manual resource management
+
+---
+
+### AWS Command Line Interface (CLI)
+
+A command-line tool used to manage AWS resources.
+
+#### Benefits
+
+* Automation
+* Scripting
+* Faster administration
+* Infrastructure management
+
+Example:
+
+```bash
+aws ec2 describe-instances
+```
+
+---
+
+### AWS Software Development Kits (SDKs)
+
+SDKs allow developers to integrate AWS services directly into applications.
+
+#### Supported Languages
+
+* Python
+* Java
+* JavaScript
+* C#
+* Go
+* PHP
+
+---
+
+## 🔐 EC2 & the Shared Responsibility Model
+
+Amazon EC2 follows the AWS Shared Responsibility Model.
+
+### AWS Responsibility (Security *of* the Cloud)
+
+AWS manages:
+
+* Physical security
+* Data centers
+* Networking infrastructure
+* Hardware maintenance
+* Global cloud infrastructure
+
+### Customer Responsibility (Security *in* the Cloud)
+
+Customers manage:
+
+* Operating systems
+* Security patches
+* User access control
+* Security groups
+* Firewall rules
+* Application security
+
+---
+
+## 📦 Amazon Machine Images (AMIs)
+
+An Amazon Machine Image (AMI) is a preconfigured template used to launch EC2 instances.
+
+### Components of an AMI
+
+* Operating System
+* Application software
+* Storage configuration
+* Architecture settings
+* Launch permissions
+
+---
+
+### Types of AMIs
+
+#### AWS Managed AMIs
+
+Provided and maintained by AWS.
+
+#### Marketplace AMIs
+
+Created by third-party vendors and available through AWS Marketplace.
+
+#### Custom AMIs
+
+Created and maintained by users for specific organizational requirements.
+
+---
+
+#### Benefits of AMIs
+
+✅ Faster deployments
+
+✅ Consistent configurations
+
+✅ Reduced setup errors
+
+✅ Easier scaling
+
+✅ Standardized environments
+
+---
+
+## 💰 Amazon EC2 Pricing Models
+
+AWS offers multiple pricing options to optimize costs.
+
+| Pricing Model       | Description                                 |
+| ------------------- | ------------------------------------------- |
+| On-Demand           | Pay only for resources used                 |
+| Reserved Instances  | Up to 75% savings for predictable workloads |
+| Savings Plans       | Flexible long-term pricing commitments      |
+| Spot Instances      | Up to 90% savings using spare AWS capacity  |
+| Dedicated Hosts     | Entire physical server reserved             |
+| Dedicated Instances | Hardware isolated to a single account       |
+
+---
+
+## 📈 Scalability vs Elasticity
+
+Although related, scalability and elasticity are different concepts.
+
+### Scalability
+
+The ability of a system to increase resources to handle growth.
+
+#### Vertical Scaling (Scale Up)
+
+Increase the power of existing resources.
+
+```text
+2 vCPU → 8 vCPU
+4 GB RAM → 32 GB RAM
+```
+
+#### Horizontal Scaling (Scale Out)
+
+Add additional servers.
+
+```text
+1 Server → 5 Servers
+```
+
+---
+![Module-2](images/module-2.6.png)
+
+---
+
+## Elasticity
+
+The ability to automatically adjust resources based on demand.
+
+#### Example
+
+```text
+High Traffic → Add Resources
+Low Traffic → Remove Resources
+```
+
+#### Benefits
+
+* Better performance
+* Lower operational costs
+* Efficient resource utilization
+* Automatic resource adjustment
+
+---
+
+## 🔄 Amazon EC2 Auto Scaling
+
+Amazon EC2 Auto Scaling automatically adjusts the number of EC2 instances based on application demand.
+
+### Scaling Methods
+
+#### Dynamic Scaling
+
+Automatically responds to real-time demand changes.
+
+#### Predictive Scaling
+
+Forecasts future traffic and provisions resources before demand increases.
+
+---
+
+## Auto Scaling Group Settings
+
+| Setting          | Purpose                             |
+| ---------------- | ----------------------------------- |
+| Minimum Capacity | Lowest number of running instances  |
+| Desired Capacity | Target number of instances          |
+| Maximum Capacity | Highest number of instances allowed |
+
+---
+### Minimum Capicity 
+![Module-2](images/module-2.8.png)
+
+
+### Maximum Capacity 
+![Module-2](images/module-2.9.png)
+
+
+---
+
+#### Benefits
+
+✅ High availability
+
+✅ Cost optimization
+
+✅ Improved performance
+
+✅ Reduced operational effort
+
+---
+
+## ⚖️ Elastic Load Balancing (ELB)
+
+Elastic Load Balancing distributes incoming traffic across multiple EC2 instances.
+
+#### Without ELB
+
+```text
+Users → Single Server
+```
+
+#### With ELB
+
+```text
+Users → Load Balancer → Multiple Servers
+```
+
+---
+
+#### Benefits
+
+✅ Efficient traffic distribution
+
+✅ High availability
+
+✅ Fault tolerance
+
+✅ Better performance
+
+✅ Simplified scaling
+
+---
+
+#### Common Load Balancing Algorithms
+
+| Method              | Description                         |
+| ------------------- | ----------------------------------- |
+| Round Robin         | Traffic distributed evenly          |
+| Least Connections   | Routes to least busy server         |
+| IP Hash             | Routes based on client IP           |
+| Least Response Time | Routes to fastest responding server |
+
+---
+
+## 🏗️ Application Architecture Patterns
+
+### Monolithic Architecture
+
+All application components are tightly coupled within a single application.
+
+#### Challenges
+
+* Difficult scaling
+* Single point of failure
+* Slower deployments
+* Reduced flexibility
+
+---
+
+### Microservices Architecture
+
+Application components operate independently and communicate through APIs or events.
+
+#### Benefits
+
+* Independent scaling
+* Better fault isolation
+* Faster deployments
+* Improved resilience
+* Easier maintenance
+
+---
+
+## 📡 Amazon EventBridge
+
+Amazon EventBridge is a serverless event bus service that enables event-driven architectures.
+
+Applications can communicate through events without being tightly coupled.
+
+### Example: Food Delivery Application
+
+1. Customer places an order
+2. Payment service processes payment
+3. Restaurant receives notification
+4. Inventory is verified
+5. Driver receives delivery request
+
+All actions are triggered automatically through events.
+
+---
+
+## 📨 Amazon SQS (Simple Queue Service)
+
+Amazon SQS is a fully managed message queue service that enables reliable communication between distributed application components.
+
+#### Benefits
+
+* Reliable message delivery
+* Decoupled applications
+* Fault tolerance
+* High scalability
+* Message persistence
+
+##### Example
+
+Customer support tickets enter a queue and are processed when agents become available.
+
+---
+
+## 📢 Amazon SNS (Simple Notification Service)
+
+Amazon SNS is a publish-subscribe messaging service used for notifications.
+
+#### Features
+
+* Email notifications
+* SMS notifications
+* Mobile push notifications
+* Multiple subscribers
+* Topic-based messaging
+
+##### Example
+
+Subscribers receive notifications for:
+
+* New products
+* Promotions
+* Security alerts
+* Company announcements
+
+Only users subscribed to a topic receive its messages.
+
+---
+
+Quiz score
+![Module-2](images/module-2.011.png)
+
+# 📚 Course Progress
+
+| Module   | Topic                                      | Status      |
+| -------- | ------------------------------------------ | ----------- |
+| Module 1 | AWS Cloud Foundations                      | ✅ Completed |
+| Module 2 | Compute, Scaling & Application Integration | ✅ Completed |
+
+---
 
 ### ⭐ If you found this repository helpful, feel free to star it!
