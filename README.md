@@ -1,6 +1,6 @@
 
 # ☁️ AWS Cloud Essentials
-
+.
 <p align="center">
   <img src="https://img.shields.io/badge/AWS-Cloud%20Essentials-orange?style=for-the-badge&logo=amazonaws" />
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" />
