@@ -632,4 +632,487 @@ Quiz score
 
 ---
 
-### ⭐ If you found this repository helpful, feel free to star it!
+
+#  Module 3️⃣: Serverless Computing & Container Services
+
+
+---
+
+## 📖 Overview
+
+Module 3 introduces modern cloud-native computing models, focusing on **serverless computing**, **AWS Lambda**, **containers**, and AWS container management services.
+---
+
+## 🎯 Learning Objectives
+
+After completing this module, I can:
+
+- Explain the differences between unmanaged, managed, and fully managed services
+- Understand serverless computing concepts
+- Describe how AWS Lambda works
+- Identify common AWS Lambda use cases
+- Compare containers and virtual machines
+- Understand container orchestration
+- Explain Amazon ECS, Amazon ECR, and AWS Fargate
+- Identify use cases for Elastic Beanstalk, AWS Batch, Lightsail, and Outposts
+- Recognize when to use serverless or container-based solutions
+
+---
+
+## 🏗 Understanding Compute Service Models
+
+AWS provides multiple levels of infrastructure management depending on organizational needs.
+
+### Unmanaged Services
+
+With unmanaged services such as Amazon EC2:
+
+#### AWS Manages
+
+- Physical servers
+- Networking infrastructure
+- Data centers
+- Hardware maintenance
+
+#### Customer Manages
+
+- Operating systems
+- Security patches
+- Network configuration
+- Applications
+- Monitoring
+
+This model provides maximum flexibility but requires greater administrative effort.
+
+---
+
+### Managed Services
+
+Managed services reduce operational responsibilities by allowing AWS to handle portions of the infrastructure management process.
+
+#### Benefits
+
+- Reduced maintenance
+- Simplified deployment
+- Easier scaling
+- Lower operational overhead
+
+Organizations can focus more on application development and less on infrastructure management.
+
+---
+
+### Fully Managed Services
+
+Fully managed services abstract infrastructure entirely.
+
+#### Characteristics
+
+✅ No server management
+
+✅ Automatic scaling
+
+✅ Built-in availability
+
+✅ Reduced operational complexity
+
+AWS manages the underlying infrastructure while customers focus primarily on application code and business logic.
+
+![Module-3](images/module-3.0.png)
+
+
+---
+
+## ⚡ Introduction to Serverless Computing
+
+Serverless computing allows developers to build and run applications without provisioning or managing servers.
+
+Despite the name "serverless," servers still exist; however, AWS manages them completely behind the scenes.
+
+#### Benefits
+
+- No server administration
+- Automatic scaling
+- High availability
+- Pay-per-use pricing
+- Faster application development
+
+Serverless architectures are ideal for event-driven workloads and applications with unpredictable traffic patterns.
+
+---
+
+## 🚀 AWS Lambda
+
+AWS Lambda is a serverless compute service that executes code in response to events.
+
+Developers upload code as functions, and AWS automatically handles:
+
+- Infrastructure management
+- Scaling
+- Resource allocation
+- Availability
+- Execution environments
+
+Lambda only runs when triggered and charges only for actual compute time consumed.
+
+---
+
+### How AWS Lambda Works
+
+#### Step 1: Upload Function Code
+
+Developers upload application code to Lambda as a function.
+
+```text
+Developer → Lambda Function
+```
+
+#### Step 2: Configure Event Triggers
+
+Functions can be triggered by:
+
+- Amazon S3 uploads
+- API requests
+- Database updates
+- AWS service events
+- User actions
+
+```text
+Event → Trigger → Lambda Function
+```
+
+#### Step 3: Execute Function
+
+When an event occurs:
+
+1. Lambda receives the event
+2. AWS allocates resources
+3. Function executes
+4. Results are returned
+
+```text
+Event
+   ↓
+Lambda
+   ↓
+Execution
+   ↓
+Response
+```
+
+AWS automatically handles scaling and infrastructure throughout the process.
+
+---
+
+### AWS Lambda Pricing
+
+Lambda follows a consumption-based pricing model.
+
+You pay only for:
+
+- Number of requests
+- Compute time used
+- Memory allocated
+
+#### Benefits
+
+- No idle server costs
+- Cost-effective for variable workloads
+- Fine-grained billing measured in milliseconds
+
+---
+
+## 🌍 Real-World AWS Lambda Use Cases
+
+### 📸 Image Processing
+
+A social media platform automatically processes uploaded images.
+
+When a user uploads a photo:
+
+- Resize image
+- Apply filters
+- Optimize storage
+
+#### Why Lambda?
+
+- Automatically scales
+- Handles thousands of uploads
+- No infrastructure management required
+
+---
+
+### 📰 Personalized News Recommendations
+
+A news application uses Lambda to:
+
+- Retrieve articles
+- Process content
+- Generate recommendations
+
+#### Why Lambda?
+
+- Executes only when users interact
+- Scales automatically during peak traffic
+
+---
+
+### 🎮 Online Gaming Events
+
+Gaming companies use Lambda to process:
+
+- Player achievements
+- Leaderboard updates
+- Match statistics
+- Real-time game events
+
+#### Why Lambda?
+
+- Handles massive event volumes
+- Scales instantly
+- Cost-effective during fluctuating usage
+
+---
+
+## 📦 Containers vs Virtual Machines
+A container packages your application with everything it needs to run, so it works the same on any computer. This helps to move, update, and manage. Containers are faster and lighter than virtual machines (VMs) because they share the host computer’s operating system. VMs use a hypervisor to run full, separate operating systems, which makes them less resource-efficient and have longer startup times.
+
+| Feature | Containers | Virtual Machines |
+|----------|------------|------------------|
+| Startup Time | Seconds | Minutes |
+| Resource Usage | Lightweight | Heavy |
+| Operating System | Shared Host OS | Full Guest OS |
+| Portability | High | Moderate |
+| Scalability | Excellent | Good |
+
+Containers share the host operating system, making them faster and more resource-efficient than virtual machines.
+
+![Module-3](images/module-3.1.png)
+
+
+---
+
+### 🔄 Why Containers Matter
+
+Containers package:
+
+- Application code
+- Libraries
+- Dependencies
+- Runtime environment
+
+Into a single portable unit.
+
+#### Benefits
+
+✅ Consistent deployments
+
+✅ Easier troubleshooting
+
+✅ Improved portability
+
+✅ Faster application delivery
+
+Containers eliminate the classic:
+
+> "It works on my machine."
+
+problem by ensuring consistency across development, testing, and production environments.
+
+![Module-3](images/module-3.2.png)
+
+---
+
+## ⚙️ Container Orchestration
+
+As applications grow, managing hundreds or thousands of containers manually becomes impractical.
+
+Container orchestration automates:
+
+- Deployment
+- Scaling
+- Health monitoring
+- Recovery
+- Resource allocation
+
+This ensures containerized applications remain available and scalable.
+![Module-3](images/module-3.3.png)
+
+---
+
+## 🐳 Amazon Elastic Container Service (ECS)
+
+Amazon ECS is AWS's container orchestration platform used to deploy and manage containerized applications.
+
+#### Key Features
+
+- Highly scalable
+- Docker support
+- Integrated with AWS services
+- Simplified container management
+
+---
+
+### ECS Launch Types
+---
+
+### ECS on EC2
+
+You manage the EC2 infrastructure.
+
+#### Best For
+
+- Custom networking
+- Specialized hardware requirements
+- Greater infrastructure control
+
+### ECS with AWS Fargate
+
+Serverless container deployment.
+
+#### Best For
+
+- Startups
+- Small teams
+- Variable workloads
+- Reduced operational management
+
+AWS handles the underlying infrastructure automatically.
+
+---
+
+## 📂 Amazon Elastic Container Registry (ECR)
+
+Amazon ECR is AWS's managed container image registry.
+
+#### Features
+
+- Store container images
+- Push and pull images
+- Secure image management
+- OCI-compliant support
+
+ECR integrates seamlessly with ECS and EKS deployments.
+
+---
+
+## 🚀 AWS Fargate
+
+AWS Fargate is a serverless compute engine for containers.
+
+Unlike ECS or EKS, which orchestrate containers, Fargate provides the infrastructure required to run them.
+
+#### Benefits
+
+✅ No server management
+
+✅ Automatic scaling
+
+✅ Pay only for resources used
+
+✅ Improved developer productivity
+
+---
+
+## 🌱 AWS Elastic Beanstalk
+
+Elastic Beanstalk simplifies application deployment and management.
+
+Developers upload code, and AWS automatically handles:
+
+- Infrastructure provisioning
+- Load balancing
+- Auto Scaling
+- Monitoring
+
+#### Supported Platforms
+
+- Java
+- Python
+- .NET
+- Node.js
+- Docker
+- PHP
+
+#### Best For
+
+- Web applications
+- REST APIs
+- Backend services
+- Microservices
+
+---
+
+## 📊 AWS Batch
+
+AWS Batch is a managed service for executing batch-processing workloads.
+
+#### Use Cases
+
+- Scientific simulations
+- Big data processing
+- Machine learning training
+- Financial analysis
+- Media rendering
+
+AWS automatically provisions compute resources and optimizes workload execution.
+
+---
+
+## 💡 Amazon Lightsail
+
+Amazon Lightsail provides a simplified cloud experience with predictable monthly pricing.
+
+#### Includes
+
+- Virtual servers
+- Databases
+- Networking
+- Storage
+
+#### Best For
+
+- Small businesses
+- Blogs
+- Personal websites
+- Development environments
+
+---
+
+## 🏢 AWS Outposts
+
+AWS Outposts extends AWS infrastructure into on-premises environments.
+
+This provides a consistent AWS experience across:
+
+- Cloud environments
+- Corporate data centers
+- Hybrid deployments
+
+#### Best For
+
+- Low-latency workloads
+- Data residency requirements
+- Legacy application modernization
+- Hybrid cloud strategies
+
+---
+
+Quiz Score 
+
+![Module-3](images/module-3.4.png)
+
+
+
+# 📚 Course Progress
+
+| Module | Topic | Status |
+|---------|--------|---------|
+| Module 1 | AWS Cloud Foundations | ✅ Completed |
+| Module 2 | Compute, Scaling & Application Integration | ✅ Completed |
+| Module 3 | Serverless Computing & Container Services | ✅ Completed |
+
+
+---
+
+### ⭐ If you found this repository helpful, consider giving it a star!
+
