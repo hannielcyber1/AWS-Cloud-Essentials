@@ -1,6 +1,6 @@
 
 # ☁️ AWS Cloud Essentials
-.
+
 <p align="center">
   <img src="https://img.shields.io/badge/AWS-Cloud%20Essentials-orange?style=for-the-badge&logo=amazonaws" />
   <img src="https://img.shields.io/badge/Status-Completed-success?style=for-the-badge" />
@@ -16,7 +16,7 @@ The goal of this repository is to document my progress in cloud computing while 
 ---
 
 
-# Module 1️⃣
+# Module 1️⃣: Introduction
 
 
 ## 🎯 Learning Objectives
@@ -160,13 +160,6 @@ Using AWS allowed the company to expand globally within minutes instead of spend
 
 ---
 
-## 🧠 Key Takeaways
-
-* AWS provides a globally distributed cloud platform.
-* Availability Zones improve reliability and uptime.
-* Multi-region deployments reduce latency.
-* Security is a shared responsibility between AWS and customers.
-* Cloud computing enables rapid global scalability.
 
 ---
 ## Quiz Score
@@ -637,11 +630,10 @@ Quiz score
 
 
 ---
-
 ## 📖 Overview
 
-Module 3 introduces modern cloud-native computing models, focusing on **serverless computing**, **AWS Lambda**, **containers**, and AWS container management services.
----
+Module 3 introduces modern cloud-native computing models, focusing on **serverless computing**, **AWS Lamda** , **containers**, and AWS container management services 
+ 
 
 ## 🎯 Learning Objectives
 
@@ -1113,6 +1105,414 @@ Quiz Score
 
 
 ---
+#  Module 4️⃣: Global Infrastructure & Infrastructure as Code
+---
+
+## 📖 Overview
+
+Module 4 explores the design of AWS Global Infrastructure and how organizations build highly available, scalable, and resilient cloud applications. It covers the process of selecting AWS Regions, deploying applications across multiple Regions and Availability Zones (AZs), leveraging edge locations for low-latency content delivery, and automating infrastructure using Infrastructure as Code (IaC) with AWS CloudFormation.
+
+
+
+## 🌍 Choosing an AWS Region
+
+Selecting the appropriate AWS Region is an important architectural decision that directly affects application performance, compliance, availability, and operational costs.
+
+AWS provides multiple Regions across the world, allowing organizations to deploy applications closer to their customers.
+
+When choosing a Region, several important factors should be considered.
+
+---
+
+![Module-4](images/module-4.0.png)
+
+### 📋 Compliance
+
+Different countries and industries have unique regulations regarding data storage, privacy, and security.
+
+For example:
+
+- GDPR (General Data Protection Regulation) protects personal data for individuals within the European Union.
+- Financial institutions may have regional compliance requirements.
+- Healthcare organizations may require specific data residency regulations.
+
+Choosing the correct AWS Region helps organizations remain compliant with applicable laws and regulations.
+
+---
+
+### ⚡ Proximity to Customers
+
+Deploying resources closer to end users reduces network latency.
+
+#### Benefits
+
+- Faster application response times
+- Better customer experience
+- Reduced network delays
+- Improved application performance
+
+Example:
+
+A company serving customers in Europe would typically deploy applications in an AWS European Region instead of North America.
+
+---
+
+### 🛠 Feature Availability
+
+Not every AWS service is available in every Region.
+
+Some Regions provide specialized services that are unavailable elsewhere.
+
+#### Example
+
+AWS GovCloud is designed specifically for:
+
+- United States government agencies
+- Government contractors
+- Highly regulated workloads
+
+Organizations should always verify service availability before selecting a deployment Region.
+
+---
+
+### 💰 Pricing Considerations
+
+Service pricing varies between AWS Regions.
+
+Factors affecting pricing include:
+
+- Operational costs
+- Energy costs
+- Local taxes
+- Government regulations
+- Data sovereignty laws
+
+Organizations often compare pricing across Regions to optimize infrastructure costs while meeting compliance requirements.
+
+---
+
+## 🏗 Designing Highly Available Architectures
+
+One of AWS's greatest strengths is the ability to build highly available and fault-tolerant systems.
+
+Rather than relying on a single data center, AWS encourages deploying workloads across multiple infrastructure layers.
+
+This includes:
+
+- Multiple Availability Zones
+- Multiple AWS Regions
+- Edge Locations
+
+This approach minimizes downtime and improves application resilience.
+
+---
+
+### 🌐 Multi-Region Deployments
+
+Deploying resources across multiple Regions provides several advantages.
+
+### Benefits
+
+- Disaster recovery
+- Global application availability
+- Reduced latency
+- Improved redundancy
+- Geographic failover
+
+If one Region experiences an outage, another Region can continue serving customer requests.
+
+---
+
+### 🏢 Availability Zones (AZs)
+
+Each AWS Region contains multiple isolated Availability Zones.
+
+Each Availability Zone includes one or more physically separate data centers.
+
+Every Availability Zone has independent:
+
+- Power
+- Cooling
+- Networking
+- Physical security
+
+#### Benefits
+
+- Fault isolation
+- High availability
+- Reduced downtime
+- Redundant infrastructure
+
+Applications deployed across multiple Availability Zones remain available even if one AZ becomes unavailable.
+
+---
+
+### ⚙ High Availability, Agility & Elasticity
+
+#### High Availability
+
+High Availability ensures applications remain operational even when infrastructure components fail.
+
+##### Benefits
+
+- Reduced downtime
+- Improved reliability
+- Better customer experience
+
+---
+
+#### Agility
+
+Agility refers to the ability to quickly deploy, modify, and adapt cloud infrastructure.
+
+AWS enables businesses to launch new services within minutes instead of weeks or months.
+
+##### Benefits
+
+- Faster deployments
+- Rapid innovation
+- Improved business flexibility
+
+---
+
+#### Elasticity
+
+Elasticity allows cloud resources to automatically scale based on workload demand.
+
+Examples:
+
+High traffic:
+
+```text
+2 EC2 Instances
+        ↓
+10 EC2 Instances
+```
+
+Low traffic:
+
+```text
+10 EC2 Instances
+        ↓
+2 EC2 Instances
+```
+
+##### Benefits
+
+- Cost optimization
+- Efficient resource utilization
+- Automatic scaling
+
+---
+
+### 📡 AWS Edge Locations
+
+AWS Edge Locations are smaller facilities located around the world that cache frequently accessed content closer to users.
+
+Unlike Regions, Edge Locations are specifically designed to reduce latency.
+
+They are commonly used with Amazon CloudFront.
+
+#### Cached Content
+
+- Images
+- Videos
+- Static websites
+- Software downloads
+- API responses
+
+#### Benefits
+
+- Faster content delivery
+- Lower latency
+- Reduced network congestion
+- Better global performance
+
+---
+
+## 🌍 AWS Global Infrastructure Overview
+
+| Component | Description |
+|-----------|-------------|
+| Region | Geographic location containing multiple Availability Zones |
+| Availability Zone | One or more isolated data centers inside a Region |
+| Edge Location | Global content delivery site used for caching and low-latency access |
+
+---
+
+## ☁ Infrastructure as Code (IaC)
+
+Infrastructure as Code (IaC) is the practice of managing cloud infrastructure using code rather than manual configuration.
+
+Instead of creating resources manually through the AWS Management Console, developers write configuration templates that automatically provision infrastructure.
+
+#### Benefits
+
+- Consistent deployments
+- Faster provisioning
+- Version-controlled infrastructure
+- Repeatable environments
+- Reduced human error
+
+Infrastructure becomes predictable, scalable, and easier to maintain.
+
+---
+
+## 🏗 AWS CloudFormation
+
+AWS CloudFormation is AWS's Infrastructure as Code service.
+
+CloudFormation allows developers to define infrastructure using templates.
+
+These templates describe AWS resources such as:
+
+- EC2 Instances
+- VPCs
+- Security Groups
+- S3 Buckets
+- Load Balancers
+- Databases
+
+CloudFormation automatically provisions and configures these resources.
+
+---
+
+#### Benefits of CloudFormation
+
+✅ Automated deployments
+
+✅ Consistent infrastructure
+
+✅ Repeatable environments
+
+✅ Easier disaster recovery
+
+✅ Integration with DevOps pipelines
+
+✅ Version-controlled infrastructure
+
+---
+
+## 🔧 Ways to Manage AWS Resources
+
+AWS provides several methods for interacting with cloud resources.
+
+---
+
+### AWS Management Console
+
+A web-based graphical interface for managing AWS services.
+
+#### Best For
+
+- Beginners
+- Manual resource management
+- Monitoring services
+- Billing dashboards
+- Visual workflows
+
+---
+### Programmatic access
+Programmatic access includes options like the AWS CLI and AWS SDKs. These options are best suited for developers and those familiar with coding languages.
+
+#### AWS Command Line Interface (CLI)
+
+The AWS CLI enables users to manage AWS resources directly from the terminal.
+
+##### Example
+
+```bash
+aws ec2 describe-instances
+```
+
+##### Best For
+
+- Automation
+- System administration
+- Scripting
+- Routine operational tasks
+
+---
+
+#### AWS SDKs
+
+Software Development Kits (SDKs) allow developers to integrate AWS services into applications using programming languages.
+
+Supported languages include:
+
+- Python
+- Java
+- JavaScript
+- C#
+- Go
+- PHP
+
+##### Common Use Cases
+
+- Upload files to Amazon S3
+- Launch EC2 instances
+- Access DynamoDB
+- Invoke Lambda functions
+
+---
+
+### Infrastructure as Code (CloudFormation)
+
+CloudFormation enables automated infrastructure deployment using templates.
+
+#### Best For
+
+- DevOps
+- CI/CD pipelines
+- Enterprise infrastructure
+- Multi-Region deployments
+- Repeatable environments
+
+---
+
+![Module-4](images/module-4.1.png)
+
+
+## 📊 Comparing AWS Management Methods
+
+| Method | Best Used For |
+|----------|---------------|
+| AWS Management Console | Beginners, graphical management, monitoring |
+| AWS CLI | Automation, scripting, administration |
+| AWS SDKs | Application development and API integration |
+| CloudFormation | Infrastructure automation and repeatable deployments |
+
+---
+
+## 🌍 Real-World Example
+
+Imagine a global coffee shop expanding into Europe and Asia.
+
+Instead of manually building infrastructure for every new location, the company can:
+
+- Deploy applications in AWS Regions closest to customers
+- Use multiple Availability Zones for high availability
+- Deliver images and website content using CloudFront Edge Locations
+- Automate deployments with CloudFormation templates
+- Scale resources automatically as customer demand increases
+
+This approach ensures consistent infrastructure, lower latency, and improved reliability across all locations.
+
+---
+
+
+# 📚 Course Progress
+
+| Module | Topic | Status |
+|---------|--------|---------|
+| Module 1 | AWS Cloud Foundations | ✅ Completed |
+| Module 2 | Compute, Scaling & Application Integration | ✅ Completed |
+| Module 3 | Serverless Computing & Container Services | ✅ Completed |
+| Module 4 | Global Infrastructure & Infrastructure as Code | ✅ Completed |
+
+---
+![Module-4](images/module-4.2.png)
+
 
 ### ⭐ If you found this repository helpful, consider giving it a star!
 
